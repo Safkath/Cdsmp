@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDSMP | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+    <div class="overlay"></div>
+    <div class="container">
+        <aside class="sidebar">
+            <h2 class="brand">CDSMP</h2>
+            <ul>
+                <li class="nav-item active" onclick="showTab('tab-dashboard', this)"><span>📊</span> Dashboard</li>
+                <li class="nav-item" onclick="showTab('tab-console', this)"><span>💻</span> Console</li>
+                <li class="nav-item" onclick="showTab('tab-files', this)"><span>📁</span> Files</li>
+                <li class="nav-item" onclick="showTab('tab-plugins', this)"><span>🔌</span> Plugins</li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <div id="tab-dashboard" class="tab" style="display: block;">
+                <header class="topbar"><h1>Server Overview</h1></header>
+                <div class="cards">
+                    <div class="card glass-card">
+                        <h3>CPU: <span id="cpuVal">0%</span></h3>
+                        <div class="progress"><div id="cpuBar"></div></div>
+                    </div>
+                    <div class="card glass-card">
+                        <h3>RAM: <span id="ramVal">0%</span></h3>
+                        <div class="progress"><div id="ramBar"></div></div>
+                    </div>
+                    <div class="card glass-card">
+                        <h3>Status</h3>
+                        <p id="playerCount" class="status-text">Connecting...</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button class="btn primary" onclick="sendCommand('start')">Start</button>
+                    <button class="btn glass" onclick="sendCommand('stop')">Stop</button>
+                    <button class="btn danger" onclick="sendCommand('restart')">Restart</button>
+                </div>
+            </div>
+
+            <div id="tab-console" class="tab" style="display: none;">
+                <header class="topbar"><h1>Live Terminal</h1></header>
+                <div class="console-box">
+                    <div id="consoleLog" class="console-log">Connecting...</div>
+                    <div class="console-input-area">
+                        <span class="prompt">></span>
+                        <input type="text" id="consoleInput" placeholder="Type a command..." autocomplete="off">
+                        <button class="btn primary" onclick="sendCommand()">Run</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tab-files" class="tab" style="display: none;">
+                <header class="topbar">
+                    <div style="flex: 1;">
+                        <h1 id="currentPathDisplay">Files: /</h1>
+                        <div class="search-wrapper">
+                            <input type="text" id="fileSearch" placeholder="Search..." oninput="filterFiles()">
+                        </div>
+                    </div>
+                    <div class="file-header-btns">
+                        <button class="btn glass" onclick="document.getElementById('importInput').click()">📥 Import</button>
+                        <input type="file" id="importInput" style="display: none;" onchange="importFile(this)">
+                        <button class="btn primary" onclick="createNew('file')">+ File</button>
+                        <button class="btn glass" onclick="createNew('folder')">+ Folder</button>
+                    </div>
+                </header>
+                <div id="fileList" class="file-explorer-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="fileEditorContainer" class="editor-modal" style="display: none;">
+        <div class="editor-content glass-card">
+            <h3 id="editorTitle">Editing...</h3>
+            <textarea id="fileEditorArea" spellcheck="false"></textarea>
+            <div class="editor-footer">
+                <button class="btn primary" onclick="saveFile()">Save</button>
+                <button class="btn glass" onclick="closeEditor()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - CDSMP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth">
+
+<div class="overlay"></div>
+
+<section class="auth-container">
+  <div class="auth-box glass-card">
+    <h2>Create Account</h2>
+    <p class="subtitle">Start managing your Minecraft server today</p>
+
+    <input type="text" id="reg_username" placeholder="Username" required>
+    <input type="email" id="reg_email" placeholder="Email" required>
+    <input type="password" id="reg_password" placeholder="Password" required>
+
+    <button id="regBtn" class="btn primary full big" onclick="registerUser()">Create Account</button>
+
+    <p class="switch">
+      Already have an account? <a href="login.html">Login here</a>
+    </p>
+    <p class="switch"><a href="index.html">Back to Landing Page</a></p>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+</body>
+</html>

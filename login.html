@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CDSMP Control Panel - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth">
+
+<div class="overlay"></div>
+
+<section class="auth-container">
+  <div class="auth-box glass-card">
+    <h2>CDSMP Login</h2>
+    <p class="subtitle">Enter your credentials to access the control panel</p>
+
+    <input type="text" id="username" placeholder="Username" required>
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button id="loginBtn" class="btn primary full big" onclick="loginUser()">Login</button>
+
+    <p class="switch">Don't have an account? <a href="register.html">Register</a></p>
+    <p class="switch"><a href="index.html">Back to Landing Page</a></p>
+  </div>
+</section>
+
+<script src="js/app.js"></script>
+</body>
+</html>
